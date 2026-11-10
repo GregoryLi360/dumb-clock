@@ -1,0 +1,46 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag (for example v1.0.0)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install packaging tool
+        run: python3 -m pip install 'dmgbuild==1.6.7'
+      - name: Test
+        run: sh scripts/test.sh
+      - name: Package
+        env:
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+        run: VERSION="${RELEASE_TAG#v}" sh scripts/package.sh
+      - name: Publish private repository release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release upload "$RELEASE_TAG" dist/*.dmg dist/*.sha256 --clobber
+          else
+            gh release create "$RELEASE_TAG" dist/*.dmg dist/*.sha256 \
+              --verify-tag --title "stopwatch ${RELEASE_TAG#v}" \
+              --notes "Universal macOS app for Apple Silicon and Intel. Requires macOS 13 or later. Drag the app to Applications. This personal build is ad-hoc signed and is not Apple-notarized."
+          fi
