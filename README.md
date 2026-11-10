@@ -1,9 +1,7 @@
 <p align="center"><img src="assets/AppIcon.png" width="128" alt="stopwatch icon"></p>
 
 <h1 align="center">stopwatch</h1>
-Sick of bloated software that doesn't work.
-
-Just trying to make a stopwatch and timer for macOS with intuitive UX and a sleek UI.
+A dumb stopwatch and timer for macOS. Intuitive software that just works.
 
 ## Install
 
