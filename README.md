@@ -1,7 +1,7 @@
 <p align="center"><img src="assets/AppIcon.png" width="128" alt="stopwatch icon"></p>
 
 <h1 align="center">stopwatch</h1>
-A dumb stopwatch and timer for macOS. Intuitive software that just works.
+<p align="center">A dumb stopwatch and timer for macOS.</p>
 
 ## Install
 
