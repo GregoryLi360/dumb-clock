@@ -1,9 +1,9 @@
 <p align="center"><img src="assets/AppIcon.png" width="128" alt="stopwatch icon"></p>
 
 <h1 align="center">stopwatch</h1>
-<p align="center">A little time. Nothing else.</p>
+Sick of bloated software that doesn't work.
 
-A small, transparent stopwatch and countdown timer for macOS. Native Swift and AppKit. No accounts, subscriptions, analytics, network access, or runtime dependencies.
+Just trying to make a stopwatch and timer for macOS with intuitive UX and a sleek UI.
 
 ## Install
 
@@ -11,7 +11,7 @@ Download the latest **stopwatch DMG** from [Releases](https://github.com/Gregory
 
 **Requires macOS 13 Ventura or later.** The app runs natively on Apple Silicon and Intel Macs.
 
-Releases are ad-hoc signed, **not Apple-notarized**. If macOS blocks the downloaded app, use **System Settings → Privacy & Security → Open Anyway** after attempting to open it. No system-wide security changes are needed.
+Releases are ad-hoc signed, **not Apple-notarized**. If macOS blocks the downloaded app, use **System Settings → Privacy & Security → Open Anyway** after attempting to open it.
 
 ## Use
 
@@ -44,15 +44,15 @@ Install Apple's Command Line Tools or Xcode, then:
 open "build/stopwatch.app"
 ```
 
-`build.sh` creates a universal app bundle. To create the release installer:
+Build the DMG:
 
 ```sh
 ./scripts/package.sh
 ```
 
-Packaging uses `dmgbuild`; see the script for its pinned development dependency. The app itself has no third-party dependencies. `./scripts/render-assets.sh` regenerates the icon and installer artwork using native AppKit tools.
+Written in Swift and AppKit. Packaging uses `dmgbuild`. Run `./scripts/render-assets.sh` to regenerate the icon and installer artwork.
 
-An optional tag-triggered release workflow is included at `docs/release-workflow.yml.example`. It is a template, not an active GitHub Action. Releases can be built locally with the scripts above and uploaded using `gh release create`. Build output belongs in Releases, not Git history.
+There's a release workflow template in `docs/release-workflow.yml.example`; it isn't enabled.
 
 ## License
 

@@ -48,13 +48,11 @@ try save("assets/installer-background.png", size: NSSize(width: 640, height: 400
     let title = "stopwatch" as NSString
     let titleStyle: [NSAttributedString.Key: Any] = [.font: NSFont.systemFont(ofSize: 29, weight: .semibold), .foregroundColor: NSColor(calibratedWhite: 0.13, alpha: 1)]
     title.draw(at: NSPoint(x: (640 - title.size(withAttributes: titleStyle).width) / 2, y: 326), withAttributes: titleStyle)
-    let subtitle = "Drag to Applications. That's it." as NSString
+    let subtitle = "Drag to Applications." as NSString
     let subtitleStyle: [NSAttributedString.Key: Any] = [.font: NSFont.systemFont(ofSize: 14), .foregroundColor: NSColor(calibratedWhite: 0.35, alpha: 1)]
     subtitle.draw(at: NSPoint(x: (640 - subtitle.size(withAttributes: subtitleStyle).width) / 2, y: 298), withAttributes: subtitleStyle)
     stroke(NSPoint(x: 296, y: 200), NSPoint(x: 344, y: 200), width: 3, color: orange)
     stroke(NSPoint(x: 332, y: 211), NSPoint(x: 344, y: 200), width: 3, color: orange)
     stroke(NSPoint(x: 332, y: 189), NSPoint(x: 344, y: 200), width: 3, color: orange)
-    let footer = "A little time. Nothing else." as NSString
-    let footerStyle: [NSAttributedString.Key: Any] = [.font: NSFont.systemFont(ofSize: 12), .foregroundColor: NSColor(calibratedWhite: 0.45, alpha: 1)]
-    footer.draw(at: NSPoint(x: (640 - footer.size(withAttributes: footerStyle).width) / 2, y: 65), withAttributes: footerStyle)
+
 }
